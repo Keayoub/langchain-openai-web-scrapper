@@ -4,9 +4,9 @@ from dotenv import load_dotenv
 from langchain.chains import create_extraction_chain, create_extraction_chain_pydantic
 from langchain.chat_models import AzureChatOpenAI
 
-load_dotenv("Credentials.env")
+load_dotenv("credentials.env")
 
-COMPLETION_TOKENS = 1000
+COMPLETION_TOKENS = 500
 
 # Set this to `azure`
 os.environ["OPENAI_API_BASE"] = os.environ["AZURE_OPENAI_ENDPOINT"]
