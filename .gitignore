@@ -3,3 +3,8 @@ virtual-env
 .conda
 .mypy_cache
 __pycache__
+credentials.env
+.vscode/
+.azure/
+*.env
+
