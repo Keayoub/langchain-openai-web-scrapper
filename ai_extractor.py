@@ -16,10 +16,7 @@ os.environ["OPENAI_API_TYPE"] = "azure"
 MODEL_NAME = "gpt-35-turbo"
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
-llm = AzureChatOpenAI(
-    deployment_name=MODEL_NAME, temperature=0.5, max_tokens=COMPLETION_TOKENS
-)
-
+llm = AzureChatOpenAI(deployment_name=MODEL_NAME, temperature=0.5, max_tokens=COMPLETION_TOKENS)
 
 def extract(content: str, **kwargs):
     response = ""
