@@ -1,0 +1,25 @@
+langchain==0.0.339
+faiss-cpu
+openai==0.28.1
+tiktoken
+docx2txt
+html2text
+pillow
+pypdf
+tenacity
+sqlalchemy<2.0.0
+pyodbc
+tabulate
+azure-cosmos
+botbuilder-integration-aiohttp>=4.14.4
+streamlit
+python-dotenv
+azure-ai-formrecognizer
+BeautifulSoup4  # for web scraping
+requests  # for web scraping
+poetry  # for package management
+playwright  # for web scraping
+pprintpp  # for pretty printing
+
+
+

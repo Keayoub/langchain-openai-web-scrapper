@@ -1,6 +1,12 @@
 {
   "[python]": {
-    "editor.defaultFormatter": "ms-python.autopep8"
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
-  "python.formatting.provider": "none"
+  "python.formatting.provider": "none",
+  "terminal.integrated.env.windows": {
+    "PATH": "C:\\Users\\aykeba\\.azurelogicapps\\dependencies\\DotNetSDK;${env:PATH}"
+  },
+  "omnisharp.dotNetCliPaths": [
+    "C:\\Users\\aykeba\\.azurelogicapps\\dependencies\\DotNetSDK"
+  ]
 }

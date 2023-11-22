@@ -3,7 +3,8 @@ import pprint
 
 from ai_extractor import extract
 from schemas import SchemaNewsWebsites, ecommerce_schema
-from scrape import ascrape_playwright
+from scrape import ascrape_llm_loader, ascrape_playwright
+from langchain.document_loaders import AsyncHtmlLoader
 
 # TESTING
 if __name__ == "__main__":
@@ -14,7 +15,17 @@ if __name__ == "__main__":
     wsj_url = "https://www.wsj.com"
     nyt_url = "https://www.nytimes.com/ca/"
     ecommerce_url = "https://appsumo.com"
-    amazon_url = "https://www.amazon.ca/s?k=computers&crid=1LUXGQOD2ULFD&sprefix=%2Caps%2C94&ref=nb_sb_ss_recent_1_0_recent"
+    enghub_url = "https://dev.azure.com/DataAI/Readiness/_wiki/wikis/Readiness/91/Accelerating-Solutions-with-Cosmos-DB"
+
+    urls = [cnn_url]
+    schema = {
+        "properties": {
+            "news_article_title": {"type": "string"},
+            "news_article_summary": {"type": "string"},
+        },
+        "required": ["news_article_title", "news_article_summary"],
+    }
+    tags_to_extract = ["span", "article"]
 
     async def scrape_with_playwright(url: str, **kwargs):
         html_content = await ascrape_playwright(url)
@@ -25,14 +36,11 @@ if __name__ == "__main__":
 
         html_content_fits_context_window_llm = html_content[:token_limit]
 
-        extracted_content = extract(**kwargs,
-                                    content=html_content_fits_context_window_llm)
+        extracted_content = extract(
+            **kwargs, content=html_content_fits_context_window_llm
+        )
 
         pprint.pprint(extracted_content)
 
     # Scrape and Extract with LLM
-    asyncio.run(scrape_with_playwright(
-        url=ecommerce_url,
-        # schema_pydantic=SchemaNewsWebsites
-        schema=ecommerce_schema
-    ))
+    asyncio.run(scrape_with_Async_loader(urls=[wsj_url], schema=SchemaNewsWebsites))

@@ -12,6 +12,5 @@ ecommerce_schema = {
 
 class SchemaNewsWebsites(BaseModel):
     news_article_title: str
-
     news_article_summary: str
     news_article_extra_info: str
